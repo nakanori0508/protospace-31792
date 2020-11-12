@@ -1,0 +1,23 @@
+<main class="main">
+  <div class="inner">
+    <%# ログインしているときは以下を表示する %>
+    <% if user_signed_in? %>
+      <div class="greeting">
+        こんにちは、
+        <%= link_to "#{current_user.name}さん", "/prototypes/:prototype_id/users/#{current_user.id}", class: :greeting__link %>
+      </div>
+    <% end %>
+    <%# // ログインしているときは上記を表示する %>
+    <div class="card__wrapper">
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <%# locals: {prototype: @prototypes}この書き方が基本形 %>
+      <%# この上の記述は、@prototypesの変数の値を、部分テンプレートで使われるprototype変数にうつしている %>
+      <%# collection: {prototype: @prototypes}この記述方法は間違っている %>
+      <%# collectionの役割1：変数の移し替え（localsと同様） %>
+      <%# collectionの役割2:localsでは記述必須の移し先の変数めいの記述の省略（ただし、移し元の変数の命名規則は、先頭に@と末尾にsがついていること） %>
+      <%# 移し先の変数名は、移し元の変数の@とsを省いた名称になる %>
+      <%= render partial: "prototype", collection: @prototypes %>
+    </div>
+  </div>
+</main>
+<%# prototype_user_path(current_user.id) %>

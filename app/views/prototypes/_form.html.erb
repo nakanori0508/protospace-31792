@@ -1,0 +1,33 @@
+<%= form_with model: [@prototype], local: true do |f|%>
+<%# form_withに関して %>
+<%# 通常はurlとmethodを指定する %>
+<%# urlとmethodを省略する場合は、modelの記述をする %>
+<%# modelを指定すると、Path（Path:データの送り先）とmethodを自動で作成する %>
+<%# Pathとは、ターミナルのPrefixのことをさす %>
+<%# Pathは変数めいを参照している。新規投稿の時は、複数形のPathに、更新の時は単数形のPathになる %>
+<%# modelの変数名の中身を参照している。空なら新規投稿（create）、データがあれば更新（update）に自動で分岐する。 %>
+
+  <div class="field">
+    <%= f.label :title, "プロトタイプの名称" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :catch_copy, "キャッチコピー" %><br />
+    <%= f.text_area :catch_copy, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :concept, "コンセプト" %><br />
+    <%= f.text_area :concept, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "プロトタイプの画像" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
