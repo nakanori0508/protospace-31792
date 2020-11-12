@@ -18,6 +18,7 @@ class PrototypesController < ApplicationController
     # @prototypeに新規オブジェクトを作成
     @prototype = Prototype.new(prototype_params)
     # prototype_paramsで追加したデータを↓で保存
+    
     if @prototype.save
       # 保存されたらルートパスに戻る
       redirect_to root_path
@@ -27,6 +28,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @comments =  Prototype.find(params[:id]).comments.includes(:user)
     @prototype = Prototype.find(params[:id])
 
